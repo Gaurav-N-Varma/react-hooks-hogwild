@@ -1,12 +1,10 @@
 import React from "react";
 import HogCard from "./HogCard"
 
-import hogs from "../porkers_data";
-
-export default function HogList() {
+export default function HogList(props) {
     return(
         <div>
-            {hogs.map((hog) => {
+            {props.theHogs.map((hog) => {
                 // each component of the same name should have a unique key!
                 return <HogCard key={hog.name} hog={hog} />
             })}
