@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function Filter({
     showGreased,
     onChangeShowGreased,
     sortBy,
-    onChangeSortBy
+    onChangeSortBy,
+    onChangeHogListAdd
 }) {
+    const [textInput, setTextInput] = useState('')
 
     function handleToggleGreased(event) {
         onChangeShowGreased(event.target.checked)
@@ -15,6 +17,10 @@ export default function Filter({
         onChangeSortBy(event.target.value)
     }
     
+    function handleAdd() {
+        onChangeHogListAdd(textInput)
+    }
+
     return(
         <div className='ui menu'>
             <div className='ui item'>
@@ -50,7 +56,11 @@ export default function Filter({
                     className='ui input focus'
                     type='text'
                     placeholder='Add hog...'
+                    onChange={(e) => setTextInput(e.target.value)}
                 />
+            </div>
+            <div className='ui item'>
+                <button className='ui button' onClick={handleAdd}>Add</button>
             </div>
         </div>
     )

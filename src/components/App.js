@@ -9,16 +9,19 @@ function App() {
 	// we want data from Filter whether or not the user wants greased hogs, we can create a state for this
 	const [showGreased, setShowGreased] = useState(false)
 	const [sortBy, setSortBy] = useState('name')
+	const [hogList, setHogList2] = useState(hogs
+		.filter(hog => showGreased ? hog.greased : true)
+		.sort((hog1, hog2) => {
+			if (sortBy === 'name') {
+				return hog1.name.localeCompare(hog2.name)
+			} else {
+				return hog1.weight - hog2.weight
+			}
+		}))
 
-	const hogList = hogs
-	.filter(hog => showGreased ? hog.greased : true)
-	.sort((hog1, hog2) => {
-		if (sortBy === 'name') {
-			return hog1.name.localeCompare(hog2.name)
-		} else {
-			return hog1.weight - hog2.weight
-		}
-	})
+	function hogListAdd(newName) {
+		setHogList2([...hogList, { name : newName }])
+	}
 
 	return (
 		<div className="App">
@@ -28,6 +31,7 @@ function App() {
 			onChangeShowGreased={setShowGreased}
 			sortBy = {sortBy}
 			onChangeSortBy={setSortBy}
+			onChangeHogListAdd={hogListAdd}
 			/>
 			<div>
 				<HogList 
