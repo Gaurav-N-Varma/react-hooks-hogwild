@@ -29,9 +29,11 @@ function App() {
 			sortBy = {sortBy}
 			onChangeSortBy={setSortBy}
 			/>
-			<HogList 
-				theHogs={hogList}
-			/>
+			<div>
+				<HogList 
+					theHogs={hogList}
+				/>
+			</div>
 		</div>
 	);
 }

@@ -2,6 +2,11 @@ import React, {useState} from "react";
 
 export default function HogCard(props) {
     const [isClicked, setClicked] = useState(false)
+    const [isHidden, setIsHidden] = useState(false)
+
+    if (isHidden) {
+        return null
+    }
 
     const clickedTemplate = (
         <div>
@@ -15,9 +20,16 @@ export default function HogCard(props) {
     )
 
     const nonClickedTemplate = (
-        <div className='ui card'>
-            <h1>{props.hog.name}</h1>
-            <img src={props.hog.image} alt='baby hog!' />
+        <div className='ui card eight wide column pigTile'>
+            <div className='image'>
+                <img src={props.hog.image} alt='baby hog!' />
+            </div>
+            <div className='content'>
+                <h1 className="header">{props.hog.name}</h1>
+            </div>
+            <div className='ui button'>
+                <button onClick={() => setIsHidden(true)}>Hide</button>
+            </div>
         </div>
     )
 

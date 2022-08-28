@@ -42,6 +42,16 @@ export default function Filter({
                     onChange={handleToggleGreased}
                 />
             </div>
+            <div className ='ui item'>
+                <label>Add a hog!</label>
+            </div>
+            <div className='ui item'>
+                <input
+                    className='ui input focus'
+                    type='text'
+                    placeholder='Add hog...'
+                />
+            </div>
         </div>
     )
 }
