@@ -15,7 +15,7 @@ export default function HogCard(props) {
     )
 
     const nonClickedTemplate = (
-        <div>
+        <div className='ui card'>
             <h1>{props.hog.name}</h1>
             <img src={props.hog.image} alt='baby hog!' />
         </div>
